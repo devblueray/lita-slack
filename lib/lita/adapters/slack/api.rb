@@ -21,29 +21,29 @@ module Lita
         end
 
         def im_open(user_id)
-          response_data = call_api("im.open", user: user_id)
+          response_data = call_api("conversations.open", users: user_id)
 
           SlackIM.new(response_data["channel"]["id"], user_id)
         end
 
         def channels_info(channel_id)
-          call_api("channels.info", channel: channel_id)
+          call_api("conversations.info", channel: channel_id)
         end
 
         def channels_list
-          call_api("channels.list")
+          call_api("conversations.list")
         end
 
         def groups_list
-          call_api("groups.list")
+          call_api("conversations.list")
         end
 
         def mpim_list
-          call_api("mpim.list")
+          call_api("conversations.list")
         end
 
         def im_list
-          call_api("im.list")
+          call_api("conversations.list")
         end
 
         def send_attachments(room_or_user, attachments)
@@ -66,7 +66,7 @@ module Lita
         end
 
         def set_topic(channel, topic)
-          call_api("channels.setTopic", channel: channel, topic: topic)
+          call_api("conversations.setTopic", channel: channel, topic: topic)
         end
 
         def rtm_start
